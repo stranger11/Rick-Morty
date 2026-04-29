@@ -14,8 +14,13 @@ class CharactersScreen extends StatefulWidget {
   State<CharactersScreen> createState() => _CharactersScreenState();
 }
 
-class _CharactersScreenState extends BaseBlocStateWidget<
-    CharactersScreen, CharactersBloc, CharactersEvent> {
+class _CharactersScreenState
+    extends
+        BaseBlocStateWidget<
+          CharactersScreen,
+          CharactersBloc,
+          CharactersEvent
+        > {
   late final ScrollController _scrollController;
 
   @override
@@ -82,8 +87,10 @@ class _CharactersScreenState extends BaseBlocStateWidget<
             return ListView.separated(
               controller: _scrollController,
               itemCount:
-                  state.characters.length + (state.isPageLoading ? 1 : 0),
-              separatorBuilder: (context, index) => const Divider(height: 1),
+                  state.characters.length +
+                  (state.isPageLoading ? 1 : 0),
+              separatorBuilder: (context, index) =>
+                  const Divider(height: 1),
               itemBuilder: (context, index) {
                 if (index >= state.characters.length) {
                   return const Padding(
@@ -94,7 +101,11 @@ class _CharactersScreenState extends BaseBlocStateWidget<
                 final character = state.characters[index];
                 return ListTile(
                   onTap: () {
-                    sendEvent(CharactersEvent.openCharacterDetails(character.id));
+                    sendEvent(
+                      CharactersEvent.openCharacterDetails(
+                        character.id,
+                      ),
+                    );
                   },
                   leading: ClipOval(
                     child: Image.network(
@@ -102,16 +113,19 @@ class _CharactersScreenState extends BaseBlocStateWidget<
                       width: 40,
                       height: 40,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) => Container(
-                        width: 40,
-                        height: 40,
-                        color: Colors.grey.shade300,
-                        child: const Icon(Icons.person, size: 20),
-                      ),
+                      errorBuilder: (context, error, stackTrace) =>
+                          Container(
+                            width: 40,
+                            height: 40,
+                            color: Colors.grey.shade300,
+                            child: const Icon(Icons.person, size: 20),
+                          ),
                     ),
                   ),
                   title: Text(character.name),
-                  subtitle: Text('${character.status} - ${character.species}'),
+                  subtitle: Text(
+                    '${character.status} - ${character.species}',
+                  ),
                 );
               },
             );
@@ -121,14 +135,19 @@ class _CharactersScreenState extends BaseBlocStateWidget<
     );
   }
 
-  String _resolveErrorText(CharactersState state, AppLocalizations l10n) {
+  String _resolveErrorText(
+    CharactersState state,
+    AppLocalizations l10n,
+  ) {
     switch (state.errorKey) {
       case ErrorKeys.failedToLoadCharacters:
         return l10n.failedToLoadCharacters;
       case ErrorKeys.failedToLoadMoreCharacters:
         return l10n.failedToLoadMoreCharacters;
       case ErrorKeys.rateLimit:
-        return l10n.rateLimitRepeatInSeconds(state.retryAfterSeconds ?? 2);
+        return l10n.rateLimitRepeatInSeconds(
+          state.retryAfterSeconds ?? 2,
+        );
       default:
         return l10n.unknownError;
     }
