@@ -1,0 +1,60 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Morty App",
+  "charactersTitle": "Рик и Морти",
+  "retry": "Повторить",
+  "unknownError": "Неизвестная ошибка",
+  "failedToLoadCharacters": "Не удалось загрузить персонажей",
+  "failedToLoadMoreCharacters": "Не удалось догрузить персонажей",
+  "rateLimitRepeatInSeconds": "Лимит запросов. Повторите через {seconds} сек.",
+  "@rateLimitRepeatInSeconds": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "characterDetailsTitle": "Детали персонажа",
+  "noData": "Нет данных",
+  "statusLabel": "Статус: {value}",
+  "@statusLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "speciesLabel": "Вид: {value}",
+  "@speciesLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "genderLabel": "Пол: {value}",
+  "@genderLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "originLabel": "Происхождение: {value}",
+  "@originLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "locationLabel": "Локация: {value}",
+  "@locationLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "failedToLoadCharacterDetails": "Не удалось загрузить детали персонажа"
+}

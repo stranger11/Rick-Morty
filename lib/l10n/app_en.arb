@@ -1,0 +1,60 @@
+{
+  "@@locale": "en",
+  "appTitle": "Morty App",
+  "charactersTitle": "Rick and Morty",
+  "retry": "Retry",
+  "unknownError": "Unknown error",
+  "failedToLoadCharacters": "Failed to load characters",
+  "failedToLoadMoreCharacters": "Failed to load more characters",
+  "rateLimitRepeatInSeconds": "Rate limit. Repeat in {seconds} sec.",
+  "@rateLimitRepeatInSeconds": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "characterDetailsTitle": "Character details",
+  "noData": "No data",
+  "statusLabel": "Status: {value}",
+  "@statusLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "speciesLabel": "Species: {value}",
+  "@speciesLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "genderLabel": "Gender: {value}",
+  "@genderLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "originLabel": "Origin: {value}",
+  "@originLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "locationLabel": "Location: {value}",
+  "@locationLabel": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "failedToLoadCharacterDetails": "Failed to load character details"
+}
