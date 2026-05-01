@@ -1,8 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:morty_app/data/remote/rick_morty_api_service.dart';
 import 'package:morty_app/domain/entities/character_details.dart';
 import 'package:morty_app/domain/entities/characters_page.dart';
 import 'package:morty_app/domain/repositories/character_repository.dart';
 
+@LazySingleton(as: CharacterRepository)
 class CharacterRepositoryImpl implements CharacterRepository {
   CharacterRepositoryImpl(this._apiService);
 
