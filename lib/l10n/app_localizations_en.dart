@@ -64,4 +64,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get failedToLoadCharacterDetails => 'Failed to load character details';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get tabCharactersLabel => 'Characters';
+
+  @override
+  String get exploreTitle => 'Explore';
+
+  @override
+  String get exploreOpenNextCta => 'Next screen (this tab stack)';
+
+  @override
+  String get exploreNextTitle => 'Explore details';
+
+  @override
+  String get exploreNextBody =>
+      'Pushed on top of this tab only. Back pops here.';
 }

@@ -1,48 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:morty_app/core/navigation/app_router.dart';
 import 'package:morty_app/core/navigation/navigate_action.dart';
 import 'package:morty_app/core/navigation/navigation_type.dart';
-import 'package:morty_app/di/injection.dart';
-import 'package:morty_app/presentation/character_details/bloc/character_details_bloc.dart';
-import 'package:morty_app/presentation/character_details/character_details_screen.dart';
 
-class AppNavigator {
-  static Future<D?> navigate<D>({
-    required BuildContext context,
-    required NavigateAction action,
-  }) async {
+/// Вся навигация на базе [go_router]. Вызывается из UI только через [NavigateAction]
+/// и [BaseBlocListener], либо напрямую здесь при разборе экшена.
+abstract final class AppNavigator {
+  AppNavigator._();
+
+  /// Разбор [NavigateAction] после выхода из блока (см. [BaseBlocListener]).
+  static Future<void> applyNavigateAction(
+    BuildContext context,
+    NavigateAction action,
+  ) async {
     if (action is NavigateBack) {
-      Navigator.pop(context);
-      return null;
+      pop(context);
+      return;
     }
+    if (action is NavigateToSettings) {
+      navigateToSettings(context);
+      return;
+    }
+    if (action is NavigateToExploreNext) {
+      navigateToExploreNext(context);
+      return;
+    }
+    if (action is NavigateToCharacterDetails) {
+      await openCharacterDetails(
+        context,
+        action.characterId,
+        navigateType: action.navigateType,
+      );
+    }
+  }
 
-    late NavigateType navigateType;
-    late Route<D?> route;
+  /// Переключает на вкладку настроек и сбрасывает её стек на корень.
+  static void navigateToSettings(BuildContext context) {
+    context.goNamed(AppRouteNames.settings);
+  }
 
-    action.when(
-      navigateBack: () {},
-      navigateToCharacterDetails: (type, characterId) {
-        navigateType = type;
-        route = MaterialPageRoute<D?>(
-          builder: (_) => BlocProvider<CharacterDetailsBloc>(
-            create: (_) => Locator.injection<CharacterDetailsBloc>()
-              ..add(CharacterDetailsEvent.init(characterId)),
-            child: const CharacterDetailsScreen(),
-          ),
-        );
-      },
-    );
+  static void navigateToExploreNext(BuildContext context) {
+    context.pushNamed(AppRouteNames.exploreNext);
+  }
+
+  static Future<T?> openCharacterDetails<T>(
+    BuildContext context,
+    int characterId, {
+    NavigateType navigateType = NavigateType.push,
+  }) async {
+    final routeName = AppRouteNames.characterDetails;
+    final pathParameters = {'id': characterId.toString()};
 
     switch (navigateType) {
       case NavigateType.push:
-        return Navigator.of(context).push<D?>(route);
+        return context.pushNamed<T>(
+          routeName,
+          pathParameters: pathParameters,
+        );
       case NavigateType.pushReplacement:
-        return Navigator.of(context).pushReplacement<D?, Object?>(route);
+        context.pushReplacementNamed(
+          routeName,
+          pathParameters: pathParameters,
+        );
+        return null;
       case NavigateType.pushAndRemoveUntil:
-        return Navigator.of(context).pushAndRemoveUntil<D?>(route, (_) => false);
+        context.goNamed(routeName, pathParameters: pathParameters);
+        return null;
       case NavigateType.popUntil:
-        Navigator.popUntil(context, (routeForCompare) => route == routeForCompare);
+        context.goNamed(AppRouteNames.characters);
+        return null;
     }
-    return null;
+  }
+
+  static void pop(BuildContext context) {
+    if (context.canPop()) {
+      context.pop();
+    }
+  }
+
+  static void goHome(BuildContext context) {
+    context.goNamed(AppRouteNames.characters);
   }
 }

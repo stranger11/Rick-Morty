@@ -55,13 +55,14 @@ extension CharactersEventPatterns on CharactersEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CharactersInit value)?  init,TResult Function( CharactersLoadMore value)?  loadMore,TResult Function( OpenCharacterDetails value)?  openCharacterDetails,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CharactersInit value)?  init,TResult Function( CharactersLoadMore value)?  loadMore,TResult Function( OpenCharacterDetails value)?  openCharacterDetails,TResult Function( OpenSettings value)?  openSettings,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case CharactersInit() when init != null:
 return init(_that);case CharactersLoadMore() when loadMore != null:
 return loadMore(_that);case OpenCharacterDetails() when openCharacterDetails != null:
-return openCharacterDetails(_that);case _:
+return openCharacterDetails(_that);case OpenSettings() when openSettings != null:
+return openSettings(_that);case _:
   return orElse();
 
 }
@@ -79,13 +80,14 @@ return openCharacterDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CharactersInit value)  init,required TResult Function( CharactersLoadMore value)  loadMore,required TResult Function( OpenCharacterDetails value)  openCharacterDetails,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CharactersInit value)  init,required TResult Function( CharactersLoadMore value)  loadMore,required TResult Function( OpenCharacterDetails value)  openCharacterDetails,required TResult Function( OpenSettings value)  openSettings,}){
 final _that = this;
 switch (_that) {
 case CharactersInit():
 return init(_that);case CharactersLoadMore():
 return loadMore(_that);case OpenCharacterDetails():
-return openCharacterDetails(_that);case _:
+return openCharacterDetails(_that);case OpenSettings():
+return openSettings(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -102,13 +104,14 @@ return openCharacterDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CharactersInit value)?  init,TResult? Function( CharactersLoadMore value)?  loadMore,TResult? Function( OpenCharacterDetails value)?  openCharacterDetails,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CharactersInit value)?  init,TResult? Function( CharactersLoadMore value)?  loadMore,TResult? Function( OpenCharacterDetails value)?  openCharacterDetails,TResult? Function( OpenSettings value)?  openSettings,}){
 final _that = this;
 switch (_that) {
 case CharactersInit() when init != null:
 return init(_that);case CharactersLoadMore() when loadMore != null:
 return loadMore(_that);case OpenCharacterDetails() when openCharacterDetails != null:
-return openCharacterDetails(_that);case _:
+return openCharacterDetails(_that);case OpenSettings() when openSettings != null:
+return openSettings(_that);case _:
   return null;
 
 }
@@ -125,12 +128,13 @@ return openCharacterDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function()?  loadMore,TResult Function( int characterId)?  openCharacterDetails,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function()?  loadMore,TResult Function( int characterId)?  openCharacterDetails,TResult Function()?  openSettings,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case CharactersInit() when init != null:
 return init();case CharactersLoadMore() when loadMore != null:
 return loadMore();case OpenCharacterDetails() when openCharacterDetails != null:
-return openCharacterDetails(_that.characterId);case _:
+return openCharacterDetails(_that.characterId);case OpenSettings() when openSettings != null:
+return openSettings();case _:
   return orElse();
 
 }
@@ -148,12 +152,13 @@ return openCharacterDetails(_that.characterId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function()  loadMore,required TResult Function( int characterId)  openCharacterDetails,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function()  loadMore,required TResult Function( int characterId)  openCharacterDetails,required TResult Function()  openSettings,}) {final _that = this;
 switch (_that) {
 case CharactersInit():
 return init();case CharactersLoadMore():
 return loadMore();case OpenCharacterDetails():
-return openCharacterDetails(_that.characterId);case _:
+return openCharacterDetails(_that.characterId);case OpenSettings():
+return openSettings();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -170,12 +175,13 @@ return openCharacterDetails(_that.characterId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function()?  loadMore,TResult? Function( int characterId)?  openCharacterDetails,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function()?  loadMore,TResult? Function( int characterId)?  openCharacterDetails,TResult? Function()?  openSettings,}) {final _that = this;
 switch (_that) {
 case CharactersInit() when init != null:
 return init();case CharactersLoadMore() when loadMore != null:
 return loadMore();case OpenCharacterDetails() when openCharacterDetails != null:
-return openCharacterDetails(_that.characterId);case _:
+return openCharacterDetails(_that.characterId);case OpenSettings() when openSettings != null:
+return openSettings();case _:
   return null;
 
 }
@@ -312,6 +318,38 @@ as int,
 
 
 }
+
+/// @nodoc
+
+
+class OpenSettings implements CharactersEvent {
+   OpenSettings();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OpenSettings);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CharactersEvent.openSettings()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 mixin _$CharactersState {

@@ -14,4 +14,8 @@ abstract class NavigateAction extends BlocAction with _$NavigateAction {
     NavigateType navigateType,
     int characterId,
   ) = NavigateToCharacterDetails;
+
+  factory NavigateAction.navigateToSettings() = NavigateToSettings;
+
+  factory NavigateAction.navigateToExploreNext() = NavigateToExploreNext;
 }

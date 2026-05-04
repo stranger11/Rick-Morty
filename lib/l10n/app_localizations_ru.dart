@@ -65,4 +65,23 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get failedToLoadCharacterDetails =>
       'Не удалось загрузить детали персонажа';
+
+  @override
+  String get settingsTitle => 'Настройки';
+
+  @override
+  String get tabCharactersLabel => 'Персонажи';
+
+  @override
+  String get exploreTitle => 'Обзор';
+
+  @override
+  String get exploreOpenNextCta => 'Следующий экран (стек вкладки)';
+
+  @override
+  String get exploreNextTitle => 'Детали обзора';
+
+  @override
+  String get exploreNextBody =>
+      'Экран только поверх этой вкладки. Назад — на корень обзора.';
 }

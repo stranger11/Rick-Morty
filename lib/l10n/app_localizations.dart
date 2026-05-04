@@ -187,6 +187,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to load character details'**
   String get failedToLoadCharacterDetails;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @tabCharactersLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Characters'**
+  String get tabCharactersLabel;
+
+  /// No description provided for @exploreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get exploreTitle;
+
+  /// No description provided for @exploreOpenNextCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Next screen (this tab stack)'**
+  String get exploreOpenNextCta;
+
+  /// No description provided for @exploreNextTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore details'**
+  String get exploreNextTitle;
+
+  /// No description provided for @exploreNextBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Pushed on top of this tab only. Back pops here.'**
+  String get exploreNextBody;
 }
 
 class _AppLocalizationsDelegate

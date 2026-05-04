@@ -56,5 +56,11 @@
       }
     }
   },
-  "failedToLoadCharacterDetails": "Failed to load character details"
+  "failedToLoadCharacterDetails": "Failed to load character details",
+  "settingsTitle": "Settings",
+  "tabCharactersLabel": "Characters",
+  "exploreTitle": "Explore",
+  "exploreOpenNextCta": "Next screen (this tab stack)",
+  "exploreNextTitle": "Explore details",
+  "exploreNextBody": "Pushed on top of this tab only. Back pops here."
 }

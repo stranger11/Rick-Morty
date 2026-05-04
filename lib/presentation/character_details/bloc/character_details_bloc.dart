@@ -27,7 +27,7 @@ class CharacterDetailsBloc
     CharacterDetailsInit event,
     Emitter<CharacterDetailsState> emit,
   ) async {
-    emit(state.copyWith(isLoading: true, errorKey: null));
+    emit(state.copyWith(isLoading: true, errorKey: null, action: null));
     try {
       final details = await _repository.fetchCharacterDetails(event.characterId);
       emit(
@@ -35,6 +35,7 @@ class CharacterDetailsBloc
           isLoading: false,
           details: details,
           errorKey: null,
+          action: null,
         ),
       );
     } catch (_) {
@@ -42,6 +43,7 @@ class CharacterDetailsBloc
         state.copyWith(
           isLoading: false,
           errorKey: ErrorKeys.failedToLoadCharacterDetails,
+          action: null,
         ),
       );
     }

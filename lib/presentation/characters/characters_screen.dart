@@ -59,7 +59,16 @@ class _CharactersScreenState
     return BaseBlocListener<CharactersBloc, CharactersState>(
       listener: (context, state, action) async {},
       child: Scaffold(
-        appBar: AppBar(title: Text(l10n.charactersTitle)),
+        appBar: AppBar(
+          title: Text(l10n.charactersTitle),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings_outlined),
+              tooltip: l10n.settingsTitle,
+              onPressed: () => sendEvent(CharactersEvent.openSettings()),
+            ),
+          ],
+        ),
         body: BlocBuilder<CharactersBloc, CharactersState>(
           builder: (context, state) {
             if (state.isLoading) {
@@ -102,9 +111,7 @@ class _CharactersScreenState
                 return ListTile(
                   onTap: () {
                     sendEvent(
-                      CharactersEvent.openCharacterDetails(
-                        character.id,
-                      ),
+                      CharactersEvent.openCharacterDetails(character.id),
                     );
                   },
                   leading: ClipOval(
@@ -115,11 +122,11 @@ class _CharactersScreenState
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) =>
                           Container(
-                            width: 40,
-                            height: 40,
-                            color: Colors.grey.shade300,
-                            child: const Icon(Icons.person, size: 20),
-                          ),
+                        width: 40,
+                        height: 40,
+                        color: Colors.grey.shade300,
+                        child: const Icon(Icons.person, size: 20),
+                      ),
                     ),
                   ),
                   title: Text(character.name),

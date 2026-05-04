@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:morty_app/core/navigation/app_router.dart';
 import 'package:morty_app/di/injection.dart';
 import 'package:morty_app/l10n/app_localizations.dart';
 import 'package:morty_app/presentation/characters/bloc/characters_bloc.dart';
-import 'package:morty_app/presentation/characters/characters_screen.dart';
+import 'package:morty_app/presentation/explore/bloc/explore_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,8 +31,12 @@ class MortyApp extends StatelessWidget {
             return bloc;
           },
         ),
+        BlocProvider<ExploreBloc>(
+          create: (_) => Locator.injection<ExploreBloc>(),
+        ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
         onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
         localizationsDelegates: const [
           AppLocalizations.delegate,
@@ -44,7 +49,6 @@ class MortyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
           useMaterial3: true,
         ),
-        home: const CharactersScreen(),
       ),
     );
   }

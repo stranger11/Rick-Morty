@@ -56,5 +56,11 @@
       }
     }
   },
-  "failedToLoadCharacterDetails": "Не удалось загрузить детали персонажа"
+  "failedToLoadCharacterDetails": "Не удалось загрузить детали персонажа",
+  "settingsTitle": "Настройки",
+  "tabCharactersLabel": "Персонажи",
+  "exploreTitle": "Обзор",
+  "exploreOpenNextCta": "Следующий экран (стек вкладки)",
+  "exploreNextTitle": "Детали обзора",
+  "exploreNextBody": "Экран только поверх этой вкладки. Назад — на корень обзора."
 }

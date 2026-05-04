@@ -8,9 +8,9 @@ import 'package:injectable/injectable.dart';
 import 'package:morty_app/core/bloc/base_bloc.dart';
 import 'package:morty_app/core/bloc/base_bloc_state.dart';
 import 'package:morty_app/core/bloc/bloc_action.dart';
-import 'package:morty_app/l10n/error_keys.dart';
 import 'package:morty_app/core/navigation/navigate_action.dart';
 import 'package:morty_app/core/navigation/navigation_type.dart';
+import 'package:morty_app/l10n/error_keys.dart';
 import 'package:morty_app/domain/entities/character.dart';
 import 'package:morty_app/domain/repositories/character_repository.dart';
 import 'package:stream_transform/stream_transform.dart';
@@ -28,6 +28,7 @@ class CharactersBloc extends BaseBloc<CharactersEvent, CharactersState> {
       transformer: throttleDroppable(const Duration(seconds: 1)),
     );
     on<OpenCharacterDetails>(_onOpenCharacterDetails);
+    on<OpenSettings>(_onOpenSettings);
   }
 
   final CharacterRepository _repository;
@@ -149,6 +150,14 @@ class CharactersBloc extends BaseBloc<CharactersEvent, CharactersState> {
         ),
       ),
     );
+  }
+
+  FutureOr<void> _onOpenSettings(
+    OpenSettings event,
+    Emitter<CharactersState> emit,
+  ) {
+    emit(state.copyWith(action: null));
+    emit(state.copyWith(action: NavigateAction.navigateToSettings()));
   }
 
   EventTransformer<E> throttleDroppable<E>(Duration duration) {

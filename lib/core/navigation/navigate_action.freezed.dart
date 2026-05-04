@@ -55,12 +55,14 @@ extension NavigateActionPatterns on NavigateAction {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( NavigateBack value)?  navigateBack,TResult Function( NavigateToCharacterDetails value)?  navigateToCharacterDetails,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( NavigateBack value)?  navigateBack,TResult Function( NavigateToCharacterDetails value)?  navigateToCharacterDetails,TResult Function( NavigateToSettings value)?  navigateToSettings,TResult Function( NavigateToExploreNext value)?  navigateToExploreNext,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case NavigateBack() when navigateBack != null:
 return navigateBack(_that);case NavigateToCharacterDetails() when navigateToCharacterDetails != null:
-return navigateToCharacterDetails(_that);case _:
+return navigateToCharacterDetails(_that);case NavigateToSettings() when navigateToSettings != null:
+return navigateToSettings(_that);case NavigateToExploreNext() when navigateToExploreNext != null:
+return navigateToExploreNext(_that);case _:
   return orElse();
 
 }
@@ -78,12 +80,14 @@ return navigateToCharacterDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( NavigateBack value)  navigateBack,required TResult Function( NavigateToCharacterDetails value)  navigateToCharacterDetails,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( NavigateBack value)  navigateBack,required TResult Function( NavigateToCharacterDetails value)  navigateToCharacterDetails,required TResult Function( NavigateToSettings value)  navigateToSettings,required TResult Function( NavigateToExploreNext value)  navigateToExploreNext,}){
 final _that = this;
 switch (_that) {
 case NavigateBack():
 return navigateBack(_that);case NavigateToCharacterDetails():
-return navigateToCharacterDetails(_that);case _:
+return navigateToCharacterDetails(_that);case NavigateToSettings():
+return navigateToSettings(_that);case NavigateToExploreNext():
+return navigateToExploreNext(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +104,14 @@ return navigateToCharacterDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( NavigateBack value)?  navigateBack,TResult? Function( NavigateToCharacterDetails value)?  navigateToCharacterDetails,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( NavigateBack value)?  navigateBack,TResult? Function( NavigateToCharacterDetails value)?  navigateToCharacterDetails,TResult? Function( NavigateToSettings value)?  navigateToSettings,TResult? Function( NavigateToExploreNext value)?  navigateToExploreNext,}){
 final _that = this;
 switch (_that) {
 case NavigateBack() when navigateBack != null:
 return navigateBack(_that);case NavigateToCharacterDetails() when navigateToCharacterDetails != null:
-return navigateToCharacterDetails(_that);case _:
+return navigateToCharacterDetails(_that);case NavigateToSettings() when navigateToSettings != null:
+return navigateToSettings(_that);case NavigateToExploreNext() when navigateToExploreNext != null:
+return navigateToExploreNext(_that);case _:
   return null;
 
 }
@@ -122,11 +128,13 @@ return navigateToCharacterDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  navigateBack,TResult Function( NavigateType navigateType,  int characterId)?  navigateToCharacterDetails,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  navigateBack,TResult Function( NavigateType navigateType,  int characterId)?  navigateToCharacterDetails,TResult Function()?  navigateToSettings,TResult Function()?  navigateToExploreNext,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case NavigateBack() when navigateBack != null:
 return navigateBack();case NavigateToCharacterDetails() when navigateToCharacterDetails != null:
-return navigateToCharacterDetails(_that.navigateType,_that.characterId);case _:
+return navigateToCharacterDetails(_that.navigateType,_that.characterId);case NavigateToSettings() when navigateToSettings != null:
+return navigateToSettings();case NavigateToExploreNext() when navigateToExploreNext != null:
+return navigateToExploreNext();case _:
   return orElse();
 
 }
@@ -144,11 +152,13 @@ return navigateToCharacterDetails(_that.navigateType,_that.characterId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  navigateBack,required TResult Function( NavigateType navigateType,  int characterId)  navigateToCharacterDetails,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  navigateBack,required TResult Function( NavigateType navigateType,  int characterId)  navigateToCharacterDetails,required TResult Function()  navigateToSettings,required TResult Function()  navigateToExploreNext,}) {final _that = this;
 switch (_that) {
 case NavigateBack():
 return navigateBack();case NavigateToCharacterDetails():
-return navigateToCharacterDetails(_that.navigateType,_that.characterId);case _:
+return navigateToCharacterDetails(_that.navigateType,_that.characterId);case NavigateToSettings():
+return navigateToSettings();case NavigateToExploreNext():
+return navigateToExploreNext();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +175,13 @@ return navigateToCharacterDetails(_that.navigateType,_that.characterId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  navigateBack,TResult? Function( NavigateType navigateType,  int characterId)?  navigateToCharacterDetails,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  navigateBack,TResult? Function( NavigateType navigateType,  int characterId)?  navigateToCharacterDetails,TResult? Function()?  navigateToSettings,TResult? Function()?  navigateToExploreNext,}) {final _that = this;
 switch (_that) {
 case NavigateBack() when navigateBack != null:
 return navigateBack();case NavigateToCharacterDetails() when navigateToCharacterDetails != null:
-return navigateToCharacterDetails(_that.navigateType,_that.characterId);case _:
+return navigateToCharacterDetails(_that.navigateType,_that.characterId);case NavigateToSettings() when navigateToSettings != null:
+return navigateToSettings();case NavigateToExploreNext() when navigateToExploreNext != null:
+return navigateToExploreNext();case _:
   return null;
 
 }
@@ -276,5 +288,69 @@ as int,
 
 
 }
+
+/// @nodoc
+
+
+class NavigateToSettings extends NavigateAction {
+   NavigateToSettings(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NavigateToSettings);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'NavigateAction.navigateToSettings()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class NavigateToExploreNext extends NavigateAction {
+   NavigateToExploreNext(): super._();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NavigateToExploreNext);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'NavigateAction.navigateToExploreNext()';
+}
+
+
+}
+
+
+
 
 // dart format on

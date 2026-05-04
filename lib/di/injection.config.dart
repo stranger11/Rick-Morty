@@ -19,6 +19,7 @@ import '../domain/repositories/character_repository.dart' as _i357;
 import '../presentation/character_details/bloc/character_details_bloc.dart'
     as _i942;
 import '../presentation/characters/bloc/characters_bloc.dart' as _i18;
+import '../presentation/explore/bloc/explore_bloc.dart' as _i982;
 import 'register_module.dart' as _i291;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -29,6 +30,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final registerModule = _$RegisterModule();
+    gh.factory<_i982.ExploreBloc>(() => _i982.ExploreBloc());
     gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
     gh.lazySingleton<_i90.RickMortyApiService>(
       () => registerModule.apiService(gh<_i361.Dio>()),
